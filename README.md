@@ -5,13 +5,16 @@ This is a ✨ special collection ✨ of website practice files and projects I've
 📂 Important Notes:
 These files are meant for educational purposes and should not be modified or altered without permission from the owner.
 
-💻 Core Disciplines I am learning:
+💻 Core Disciplines I Am Learning:
+Here are the programming languages I’m working with:
 
 1️⃣ HTML
 2️⃣ CSS
 3️⃣ JavaScript
+4️⃣ Python
+5️⃣ C#
 
-If you have suggestions on how I can improve my coding skills in the following front-end core disciplines, please let me know!
+If you have suggestions on how I can improve my coding skills in these areas, please let me know!
 
 📫 How to Reach Me:
 Feel free to contact me at: jamesphillipdeguzman@gmail.com.
