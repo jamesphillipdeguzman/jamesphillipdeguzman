@@ -1,16 +1,17 @@
-## Hi there 👋
+🌐 Welcome to My Repository!
+I am a budding software developer currently studying Bachelor of Science in Software Development at BYU-Idaho.
+This is a ✨ special collection ✨ of website practice files and projects I've created so far.
+📂 Important Notes:
+These files are meant for educational purposes and should not be modified or altered without permission from the owner.
 
-<!--
-**jamesphillipdeguzman/jamesphillipdeguzman** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+💻 Core Disciplines I am learning:
 
-Here are some ideas to get you started:
+1️⃣ HTML
+2️⃣ CSS
+3️⃣ JavaScript
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+If you have suggestions on how I can improve my coding skills in the following front-end core disciplines, please let me know!
+
+📫 How to Reach Me:
+Feel free to contact me at: jamesphillipdeguzman@gmail.com.
+You can also connect with me on LinkedIn.
