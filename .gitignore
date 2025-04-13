@@ -2,7 +2,7 @@
 node_modules/
 
 # Ignore build output folder
-dist/
+# dist/
 
 # Ignore system files that might be created by editors or OS.
 .DS_Store
