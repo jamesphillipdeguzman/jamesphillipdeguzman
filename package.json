@@ -7,13 +7,14 @@
     "build": "vite build --emptyOutDir",
     "preview": "vite preview",
     "lint": "eslint \"src/js/**/*.{js,mjs}\"",
-    "format": "prettier --ignore-path ./.gitignore --write \"./**/*.{html,json,js,ts,css}\""
+    "format": "prettier --ignore-path ./.gitignore --write \"./**/*.{html,json,js,ts,css}\"",
+    "watch": "nodemon --watch src/public/partials --watch src --ext html,js,css build.js"
   },
   "keywords": [
     "MPA",
     "personal",
     "besys",
-    "tech", 
+    "tech",
     "startup",
     "portfolio"
   ],
@@ -29,7 +30,8 @@
     "eslint-config-prettier": "^10.0.1",
     "eslint-plugin-import": "^2.31.0",
     "prettier": "^3.2.5",
-    "vite": "^6.2.3"
+    "vite": "^6.2.3",
+    "nodemon": "^3.0.1"
   },
   "browserslist": [
     "last 3 chrome versions",
