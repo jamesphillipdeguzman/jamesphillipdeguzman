@@ -8,74 +8,60 @@ dotenv.config();
    Netlify Serverless Function
 ------------------------------ */
 export async function handler(event, context) {
+  const corsHeaders = {
+    "Access-Control-Allow-Origin": "*",
+    "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+    "Access-Control-Allow-Headers": "Content-Type",
+  };
+
   try {
-    // Add CORS headers
-    const corsHeaders = {
-      "Access-Control-Allow-Origin": "*",
-      "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
-      "Access-Control-Allow-Headers": "Content-Type",
-    };
-
-    // Handle preflight (OPTIONS) requests
     if (event.httpMethod === "OPTIONS") {
-      return {
-        statusCode: 204,
-        headers: corsHeaders,
-        body: "",
-      };
+      return { statusCode: 204, headers: corsHeaders };
     }
 
-    // Parse request body
-    let body = {};
-    try {
-      body = event.body ? JSON.parse(event.body) : {};
-    } catch (parseError) {
-      console.error("❌ Failed to parse request body:", parseError.message);
-      return {
-        statusCode: 400,
-        headers: corsHeaders,
-        body: JSON.stringify({ error: "Invalid JSON in request body" }),
-      };
-    }
-
+    const body = event.body ? JSON.parse(event.body) : {};
     const query = body.query || "SELECT NOW()";
 
-    // Ensure the database connection string is available
-    if (!process.env.NEON_DB_URL) {
-      console.error("❌ NEON_DB_URL is not defined in environment variables");
+    const connectionString =
+      process.env.NEON_DB_URL || process.env.NETLIFY_DATABASE_URL;
+
+    if (!connectionString) {
+      console.error(
+        "❌ No database URL found. Env keys available:",
+        Object.keys(process.env).filter((k) => k.toLowerCase().includes("db")),
+      );
       return {
         statusCode: 500,
         headers: corsHeaders,
         body: JSON.stringify({
-          error: "Database connection string is missing",
+          error:
+            "No database connection string found in environment variables.",
         }),
       };
     }
 
-    const client = new Client({ connectionString: process.env.NEON_DB_URL });
+    const client = new Client({ connectionString });
     await client.connect();
 
-    console.log("✅ Connected to Neon");
+    console.log(
+      "✅ Connected to Neon via:",
+      connectionString.includes("neon.tech") ? "Neon" : "Other",
+    );
     console.log("🧠 Running query:", query);
 
     const result = await client.query(query);
     await client.end();
 
-    console.table(result.rows);
-
     return {
       statusCode: 200,
       headers: { ...corsHeaders, "Content-Type": "application/json" },
-      body: JSON.stringify(result.rows || []),
+      body: JSON.stringify(result.rows),
     };
   } catch (error) {
-    console.error("❌ Error occurred:", error.message);
+    console.error("❌ Error occurred:", error);
     return {
       statusCode: 500,
-      headers: {
-        "Access-Control-Allow-Origin": "*",
-        "Content-Type": "application/json",
-      },
+      headers: { ...corsHeaders, "Content-Type": "application/json" },
       body: JSON.stringify({ error: error.message }),
     };
   }
@@ -87,25 +73,27 @@ export async function handler(event, context) {
 if (path.basename(process.argv[1]).startsWith("query-db")) {
   const run = async () => {
     const query = process.argv[2];
+    const connectionString =
+      process.env.NEON_DB_URL || process.env.NETLIFY_DATABASE_URL;
+
     if (!query) {
       console.log("⚠️  Please provide an SQL query.");
-      console.log("👉 Example:");
-      console.log('   node netlify/functions/query-db.mjs "SELECT NOW();"');
+      console.log(
+        '👉 Example: node netlify/functions/query-db.js "SELECT NOW();"',
+      );
       return;
     }
 
-    if (!process.env.NEON_DB_URL) {
-      console.error("❌ NEON_DB_URL is not defined in environment variables");
+    if (!connectionString) {
+      console.error("❌ No DB URL defined.");
       return;
     }
 
-    const client = new Client({ connectionString: process.env.NEON_DB_URL });
+    const client = new Client({ connectionString });
     await client.connect();
 
     try {
       console.log("✅ Connected to Neon");
-      console.log("🧠 Running query:", query);
-
       const result = await client.query(query);
       console.table(result.rows);
       console.log(`✅ Query complete. Rows returned: ${result.rowCount}`);
