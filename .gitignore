@@ -14,3 +14,7 @@ Thumbs.db
 
 # Local Netlify folder
 .netlify
+
+
+# Ignore environment secrets
+.env
