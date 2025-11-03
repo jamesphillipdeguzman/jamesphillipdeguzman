@@ -15,6 +15,7 @@ Here are the programming languages I’m working with:
 4️⃣ Python  
 5️⃣ C#  
 6️⃣ Node.js, MongoDB & API development
+7️⃣ Next.js (React-based full-stack framework)
 
 If you have suggestions on how I can improve my coding skills in these areas, please let me know!
 
