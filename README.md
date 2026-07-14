@@ -10,22 +10,28 @@ These files are meant for educational purposes and should not be modified or alt
 Here are the programming languages and frameworks I’m working with:
 
 1️⃣ **HTML & CSS**
+* website-project
 
 2️⃣ **JavaScript**
+* simple-pos-api
 
 3️⃣ **Python**
+* DrMeetDB
 
 4️⃣ **C# & .NET Ecosystem**
 * **ASP.NET Core:** Building robust, high-performance web applications and services.
 * **Blazor:** Developing interactive, client-side web UIs using C# instead of JavaScript.
+* cse212-data-structures
 
 5️⃣ **Node.js, MongoDB & API development**
 
 6️⃣ **Next.js** (React-based full-stack framework)
+* Team-777---Handcraft-Haven
 
 7️⃣ **Software Testing** (unit testing, integration testing, and test automation)
 
 8️⃣ **Kotlin** (console programming and object-oriented concepts)  
+* DrMeetKotlin
 
 If you have suggestions on how I can improve my coding skills in these areas, please let me know!
 
